@@ -1,10 +1,9 @@
 package com.english.Service.Impl;
 
-import com.english.Service.ServiceCommon;
 import com.english.Service.WordService;
 import com.english.convert.WordUtils;
 import com.english.dto.WordDTO;
-import com.english.entity.WordEntity;
+import com.english.entity.VocabularyEntity;
 import com.english.repository.WordEnityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,7 @@ public class ServiceIpml   implements WordService {
 
     @Override
     public WordDTO save(WordDTO wordDTO) {
-        WordEntity wordEntity = wordEnityRepository.save(wordUtils.entity(wordDTO));
+        VocabularyEntity wordEntity = wordEnityRepository.save(wordUtils.entity(wordDTO));
         return wordUtils.dto(wordEntity);
     }
 

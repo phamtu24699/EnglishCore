@@ -14,13 +14,13 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.UUID;
 
-@Table(name ="word")
+@Table(name ="vocabulary")
 @Entity
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class WordEntity {
+public class VocabularyEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO,generator="UUID")
     private UUID id;
@@ -31,9 +31,6 @@ public class WordEntity {
     @Column(name = "Code")
     private  String Code;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @CreationTimestamp
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "date")
+    @Column(name = "Date")
     private Timestamp date;
 }
