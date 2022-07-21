@@ -17,8 +17,8 @@ import java.util.UUID;
 @Data
 public class RoleEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO,generator="UUID")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @Column(name = "CODE")
     private String code;

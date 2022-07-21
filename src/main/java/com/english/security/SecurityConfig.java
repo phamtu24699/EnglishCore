@@ -1,6 +1,5 @@
 package com.english.security;
 
-import com.english.Common.SystemCommon;
 import com.english.jwt.JwtAuthenticationFilter;
 import com.english.jwt.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,27 +21,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserService userService;
 
-    @Bean
-    public JwtAuthenticationFilter jwtAuthenticationFilter() {
-        return new JwtAuthenticationFilter();
-    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .cors()
+                .csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/api/login","/api/user").permitAll() // Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
+                .antMatchers("/login", "/api/user").permitAll() // Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
                 .anyRequest().authenticated(); // Tất cả các request khác đều cần phải xác thực mới được truy cập
 
         // Thêm một lớp Filter kiểm tra jwt
-        http.addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
     }
 
-
-
+    @Bean
+    public JwtAuthenticationFilter jwtAuthenticationFilter() {
+        return new JwtAuthenticationFilter();
+    }
 
 
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
@@ -51,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Get AuthenticationManager Bean
         return super.authenticationManagerBean();
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         // Password encoder, để Spring Security sử dụng mã hóa mật khẩu người dùng

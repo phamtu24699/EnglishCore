@@ -22,8 +22,8 @@ import java.util.UUID;
 @NoArgsConstructor
 public class VocabularyEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO,generator="UUID")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @Column(name = "Name")
     private  String name;

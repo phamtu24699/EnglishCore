@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface VocabularyRepository extends JpaRepository<VocabularyEntity, UUID> {
+public interface VocabularyRepository extends JpaRepository<VocabularyEntity, Long> {
 }

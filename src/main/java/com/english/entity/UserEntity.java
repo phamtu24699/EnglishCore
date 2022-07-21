@@ -9,7 +9,7 @@ import javax.management.relation.Role;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+
 
 @Table(name = "Account")
 @Entity
@@ -19,8 +19,8 @@ import java.util.UUID;
 @NoArgsConstructor
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO,generator="UUID")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
 
     private String email;

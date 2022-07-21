@@ -23,11 +23,11 @@ public class UserService implements UserDetailsService {
         if (entity == null) {
             throw new UsernameNotFoundException(username);
         }
-        return null;
+        return new CustomUserDetails(entity);
     }
 
     @Transactional
-    public UserDetails loadUserById(UUID id) {
+    public UserDetails loadUserById(Long id) {
         UserEntity user = userRepository.findById(id).orElseThrow(
                 () -> new UsernameNotFoundException("User not found with id : " + id)
         );
