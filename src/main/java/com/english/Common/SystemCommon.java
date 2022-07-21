@@ -11,7 +11,7 @@ public class SystemCommon {
     public static final String ADMIN = "ROLE_ADMIN";
     public static final String USER = "ROLE_USER";
 
-    public List<GrantedAuthority> geGrantedAuthorities(List<RoleEntity> roleEntities){
+    public static List<GrantedAuthority> geGrantedAuthorities(List<RoleEntity> roleEntities){
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         for (RoleEntity entity : roleEntities){
             grantedAuthorities.add(new SimpleGrantedAuthority( entity.getName()));
